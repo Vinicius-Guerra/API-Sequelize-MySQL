@@ -37,7 +37,7 @@ class PessoaController {
             const  novaPessoaCriada = await database.Pessoas.create(novaPessoa);
             return res.status(200).json(novaPessoaCriada)
         } catch (error) {
-            return res.status(500).json({error: message});
+            return res.status(500).json(error.message);
         }
     }
 
@@ -60,7 +60,7 @@ class PessoaController {
         try {
             await database.Pessoas.destroy({ where: { id: Number(id)}});
             res.status(200).json({ mensagem:  `O id : ${id} foi apagado com sucesso.`})
-        } catch (erroe) {
+        } catch (error) {
             return res.status(500).json({error: message});
         }
     }
@@ -117,7 +117,7 @@ class PessoaController {
         try {
             await database.Matriculas.destroy({ where: { id: Number(matriculaId)}});
             res.status(200).json({ mensagem:  `O id : ${matriculaId} foi apagado com sucesso.`})
-        } catch (erroe) {
+        } catch (error) {
             return res.status(500).json({error: message});
         }
     }
